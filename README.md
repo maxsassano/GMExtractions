@@ -54,6 +54,7 @@ Per cambiarla: rifai la procedura e incolla la nuova chiave.
 L'interfaccia è divisa in **due pannelli**:
 
 ### 🔹 Pannello SINISTRO — Selezione
+
 **Comuni** (in alto)
 **Categorie** (in basso)
 
@@ -72,9 +73,15 @@ Entrambi funzionano **allo stesso modo**:
 - **`+ Aggiungi nuova categoria alla lista`** → aggiunge una nuova categoria al file `categorie.txt` in modo **permanente**
 
 ### 🔹 Pannello DESTRO — Risultati
+
 - **AVVIA RICERCA** → avvia l'estrazione
 - **Barra di avanzamento** → mostra il progresso
 - **Schede (tab)** → **una scheda per ogni comune cercato**
+- **Filtra per categoria** → menu a tendina che mostra solo le righe della categoria selezionata. Si popola automaticamente dopo ogni ricerca con le categorie trovate. Seleziona **"Mostra tutte"** per rimuovere il filtro.
+- **Apri su Google Maps** → apre il browser con la posizione dell'attività selezionata. Funziona in 3 modi:
+  - Clicca il pulsante verde **"Apri su Google Maps"**
+  - **Doppio clic** sulla cella della colonna "Google Maps"
+  - **Tasto destro** su una riga → **"Apri su Google Maps"** o **"Copia URL"**
 - **Raggruppa per Via** → ordina i risultati per via + categoria + nome, con colori alternati
 - **Vista Normale** → rimuove la colorazione e riattiva l'ordinamento cliccando sulle intestazioni
 - **Esporta Excel / Esporta CSV** → salva i risultati
@@ -88,8 +95,10 @@ Entrambi funzionano **allo stesso modo**:
 3. Clicca **AVVIA RICERCA**
 4. Attendi 30-60 secondi
 5. Guarda le schede (una per comune) in alto
-6. Clicca **Raggruppa per Via** per organizzare le visite
-7. Clicca **Esporta Excel** per salvare
+6. Usa il **filtro per categoria** per isolare i risultati di interesse
+7. Clicca **Raggruppa per Via** per organizzare le visite
+8. Usa **"Apri su Google Maps"** per visualizzare la posizione di un'attività
+9. Clicca **Esporta Excel** per salvare
 
 ---
 
@@ -132,6 +141,7 @@ Per aggiornare `comuni.txt` o `categorie.txt` con Notepad++: aggiungi/rimuovi ri
 ## 8. Esportazione
 
 ### Esporta Excel (`.xls`)
+
 - **Un foglio per ogni comune** (nome del foglio = nome comune)
 - Intestazioni con sfondo blu e testo bianco in grassetto
 - URL Google Maps **cliccabili**
@@ -139,6 +149,7 @@ Per aggiornare `comuni.txt` o `categorie.txt` con Notepad++: aggiungi/rimuovi ri
 - **Compatibile** con Excel 2016, 2019, 365
 
 ### Esporta CSV (`.csv`)
+
 - **UTF-8 con BOM** → Excel italiano lo apre correttamente
 - Separatore `;` (standard italiano)
 - Tutte le righe di tutti i comuni in un unico file
