@@ -1,11 +1,11 @@
 # GMExtractions — Software di Estrazione Attività
 
 Applicazione Windows per estrarre attività commerciali (bar, ristoranti, alberghi,
-negozi, ecc.) da comuni italiani, con esportazione in Excel e CSV, schede separate
-per ogni comune e raggruppamento per via.
+negozi, ecc.) da comuni, province o regioni italiane, con esportazione in
+Excel / PDF / CSV, schede separate per comune e raggruppamento per via.
 
-**Versione:** 1.0.0
-**Autore:** Massimo Sassano
+**Versione:** 1.1.0  
+**Autore:** Massimo Sassano  
 **Anno:** 2026
 
 ---
@@ -28,7 +28,6 @@ per ogni comune e raggruppamento per via.
 6. Vai su **https://myprojects.geoapify.com/**
 7. Clicca **"Create new project"** → dai un nome (es. `GMExtractions`)
 8. Nella pagina del progetto, sezione **"API Keys"**, trovi la tua chiave
-   (esempio: `97a65d1c319647ea808c60e7b94cf336`)
 9. **Copia** la chiave
 
 **Piano gratuito:** 3.000 richieste al giorno, rinnovate ogni giorno alle 00:00 UTC.
@@ -43,151 +42,175 @@ per ogni comune e raggruppamento per via.
 4. Clicca **OK**
 
 La chiave viene salvata in `config.ini` nella cartella dell'eseguibile.
-NON condividerla con nessuno.
-
-Per cambiarla: rifai la procedura e incolla la nuova chiave.
 
 ---
 
 ## 4. Interfaccia — Come si usa
 
-L'interfaccia è divisa in **due pannelli**:
-
 ### 🔹 Pannello SINISTRO — Selezione
 
-**Comuni** (in alto)
-**Categorie** (in basso)
-
-Entrambi funzionano **allo stesso modo**:
-
-1. Nel campo di ricerca, digiti le prime lettere (es. `Poli` o `Rist`)
+**Comuni / Province / Regioni** e **Categorie** funzionano allo stesso modo:
+1. Digita le prime lettere nel campo di ricerca
 2. Appare un menu a tendina con i suggerimenti
-3. Clicchi sul suggerimento → appare nella lista **"Selezionati"**
-4. Ripeti per aggiungere altri comuni/categorie
-5. Per togliere una voce: selezionala e clicca **"Rimuovi"**
+3. Clicca sul suggerimento → appare nella lista **"Selezionati"**
 
-**Pulsanti disponibili:**
-- **`+ Aggiungi ai selezionati`** → aggiunge al campo di lavoro
-- **`Rimuovi ... selezionato`** → toglie dalla lista
-- **`+ Aggiungi nuovo comune alla lista`** → aggiunge un nuovo comune al file `comuni.txt` in modo **permanente**
-- **`+ Aggiungi nuova categoria alla lista`** → aggiunge una nuova categoria al file `categorie.txt` in modo **permanente**
+**Pulsanti:**
+- **`+ Aggiungi ai selezionati`** — aggiunge al campo di lavoro
+- **`Rimuovi ... selezionato`** — toglie dalla lista
+- **`+ Aggiungi nuovo comune alla lista`** — scrive in `comuni.txt` in modo permanente
+- **`+ Aggiungi nuova categoria alla lista`** — scrive in `categorie.txt` in modo permanente
 
 ### 🔹 Pannello DESTRO — Risultati
 
-- **AVVIA RICERCA** → avvia l'estrazione
-- **Barra di avanzamento** → mostra il progresso
-- **Schede (tab)** → **una scheda per ogni comune cercato**
-- **Filtra per categoria** → menu a tendina che mostra solo le righe della categoria selezionata. Si popola automaticamente dopo ogni ricerca con le categorie trovate. Seleziona **"Mostra tutte"** per rimuovere il filtro.
-- **Apri su Google Maps** → apre il browser con la posizione dell'attività selezionata. Funziona in 3 modi:
-  - Clicca il pulsante verde **"Apri su Google Maps"**
-  - **Doppio clic** sulla cella della colonna "Google Maps"
-  - **Tasto destro** su una riga → **"Apri su Google Maps"** o **"Copia URL"**
-- **Raggruppa per Via** → ordina i risultati per via + categoria + nome, con colori alternati
-- **Vista Normale** → rimuove la colorazione e riattiva l'ordinamento cliccando sulle intestazioni
-- **Esporta Excel / Esporta CSV** → salva i risultati
+- **Cerca in: Comune / Provincia / Regione**
+- **AVVIA RICERCA / STOP RICERCA** — stesso pulsante
+- **Barra di avanzamento**
+- **Filtro per Categoria** e **Filtro per Stato** (si combinano)
+- **Arricchisci selezionati** — cerca email/Instagram/Facebook dal sito web
+- **Apri su Google Maps** — apre il browser con l'attività selezionata
+- **Raggruppa per Via** — ordina per via + categoria + nome con colori alternati
+- **Vista Normale** — ripristina l'ordinamento per colonna
+- **Schede (tab)** — una scheda per ogni comune trovato
+- **Esporta Excel / PDF / CSV**
 
 ---
 
-## 5. Flusso tipico d'uso
+## 5. Modalità di ricerca
 
-1. Cerca e aggiungi 3-4 comuni (es. Policoro, Scanzano Jonico, Nova Siri)
-2. Cerca e aggiungi 5-6 categorie (es. Bar, Ristoranti, Pizzerie, Caffè)
-3. Clicca **AVVIA RICERCA**
-4. Attendi 30-60 secondi
-5. Guarda le schede (una per comune) in alto
-6. Usa il **filtro per categoria** per isolare i risultati di interesse
-7. Clicca **Raggruppa per Via** per organizzare le visite
-8. Usa **"Apri su Google Maps"** per visualizzare la posizione di un'attività
-9. Clicca **Esporta Excel** per salvare
+| Modalità | Esempio | Cosa cerca |
+|----------|---------|-----------|
+| **Comune** | `Policoro` | Solo il comune di Policoro |
+| **Provincia** | `Provincia di Matera` | Tutti i comuni della provincia |
+| **Regione** | `Basilicata` | Tutta la regione, una scheda per comune |
 
----
-
-## 6. Interpretazione dei risultati
-
-| Colonna | Cosa contiene |
-|---------|--------------|
-| Nome | Nome dell'attività |
-| Categoria | Categoria cercata (es. Ristoranti) |
-| Comune | Comune effettivo (dai dati Geoapify) |
-| Indirizzo | Via + numero civico |
-| **Via** | **Solo nome via/piazza (senza civico)** |
-| CAP | Codice postale |
-| Telefono | Numero di telefono (se disponibile) |
-| Sito | Sito web (se disponibile) |
-| Rating | Valutazione (spesso vuota, dipende dalla fonte) |
-| Recensioni | Numero recensioni (spesso vuota) |
-| Google Maps | URL cliccabile per aprire la posizione |
-
-**Nota:** i campi Rating e Recensioni sono spesso vuoti perché Geoapify
-non li fornisce. Se ti servono, considera Google Places API (a pagamento)
-o l'estensione Chrome LeadGrab.
+**Suggerimento:** per le **città metropolitane** (Bari, Milano, Roma, Napoli, ecc.) scrivi
+il nome completo: `Citta Metropolitana di Bari`.
 
 ---
 
-## 7. File di configurazione
+## 6. Azioni sulle righe
 
-Tutti i file sono nella **cartella dell'eseguibile**:
+### Tasto destro
+- Apri su Google Maps
+- Copia URL
+- Segna come: **Da visitare** / **Visitato** / **Scartato**
 
-| File | Contenuto | Modificabile |
-|------|-----------|--------------|
-| `comuni.txt` | Lista comuni (uno per riga) | ✅ Sì (Notepad++ o dal software) |
-| `categorie.txt` | Lista categorie (una per riga) | ✅ Sì (Notepad++ o dal software) |
-| `config.ini` | API Key + selezioni salvate | ⚠️ Solo dal software |
+### Doppio clic
+- **Email** → apre il client di posta
+- **Instagram** / **Facebook** → apre il browser
+- **Note** → apre l'editor per scrivere appunti
+- **Google Maps** → apre la posizione
 
-Per aggiornare `comuni.txt` o `categorie.txt` con Notepad++: aggiungi/rimuovi righe, salva. Il software li ricarica al prossimo avvio.
+### Colori delle righe
+- 🟡 **Giallo** = Da visitare
+- 🟢 **Verde** = Visitato
+- 🔴 **Rosso** = Scartato
+
+---
+
+## 7. Arricchimento (Email / Social)
+
+Geoapify **non fornisce** email, Instagram o Facebook. Per ottenerli:
+
+1. Seleziona una o più righe (oppure nessuna = tutte quelle con sito web)
+2. Clicca **"Arricchisci selezionati"**
+3. Il software scarica ogni sito e cerca pattern tipo `mailto:`, `instagram.com/...`, `facebook.com/...`
+
+**Tempi:** 2-3 secondi per riga. I dati vengono salvati nel database.
 
 ---
 
 ## 8. Esportazione
 
 ### Esporta Excel (`.xls`)
-
-- **Un foglio per ogni comune** (nome del foglio = nome comune)
-- Intestazioni con sfondo blu e testo bianco in grassetto
-- URL Google Maps **cliccabili**
-- Riga crediti in fondo a ogni foglio
-- **Compatibile** con Excel 2016, 2019, 365
-
-### Esporta CSV (`.csv`)
-
-- **UTF-8 con BOM** → Excel italiano lo apre correttamente
-- Separatore `;` (standard italiano)
-- Tutte le righe di tutti i comuni in un unico file
+- **Un foglio per ogni comune**
+- Intestazioni blu, URL Google Maps cliccabili
 - Riga crediti in fondo
+- Compatibile con Excel 2016, 2019, 365
+
+### Esporta PDF
+- **Report A4 orizzontale** con logo/crediti
+- Una sezione per ogni comune
+- Tabella con Nome, Categoria, Indirizzo, Via, Telefono, Stato
+- Badge colorato per Stato
+- Paginazione automatica
+
+### Esporta CSV
+- Tutte le righe in un unico file
+- UTF-8 con separatore `;` (Excel italiano lo apre in colonne)
 
 ---
 
-## 9. Limiti e considerazioni
+## 9. Database e storico
 
-- **Fonte dati:** Geoapify aggrega dati da OpenStreetMap e altre fonti aperte.
-  La copertura in Italia è **buona ma non completa**: per alcune città potresti
-  trovare 10-30 attività invece di 50-100.
-- **Rating e Recensioni:** generalmente non disponibili con Geoapify.
-- **Costi:** il piano gratuito di Geoapify offre 3.000 richieste/giorno.
-  Ogni coppia (comune × categoria) consuma 2 richieste (geocodifica + places).
-  Esempio: 5 comuni × 10 categorie = 100 richieste → puoi fare ~30 estrazioni/giorno.
-- **Privacy:** le richieste vengono fatte direttamente al server Geoapify.
-  Nessun dato viene inviato ad altri server.
+Tutto viene salvato in `GMExtractions.db` (SQLite, nella cartella dell'eseguibile):
+- Ogni attività mai estratta
+- Stato, data visita, note
+- Email, Instagram, Facebook
+
+**Vantaggio:** se rifai la stessa ricerca, le attività già viste appaiono in **bianco**
+(già in DB) e quelle nuove in **giallo**. Puoi copiare il file `.db` su un altro PC
+per trasferire lo storico.
 
 ---
 
-## 10. Problemi comuni
+## 10. File di configurazione
+
+| File | Contenuto |
+|------|-----------|
+| `comuni.txt` | Lista comuni (uno per riga) |
+| `categorie.txt` | Lista categorie (una per riga) |
+| `config.ini` | API Key, comuni/categorie selezionati |
+| `GMExtractions.db` | Database SQLite dello storico |
+
+---
+
+## 11. Limiti noti
+
+**Geoapify non fornisce:**
+- Rating (stelle)
+- Numero di recensioni
+- Orari di apertura
+
+**Copertura dati:** Geoapify aggrega OpenStreetMap + altre fonti aperte.
+In Italia la copertura è **buona ma non completa**: alcune città hanno 20-50 attività,
+altre 5-10. Google Places ha copertura maggiore ma è a pagamento.
+
+---
+
+## 12. Problemi comuni
 
 | Problema | Soluzione |
 |----------|-----------|
-| "API Key mancante" | Vai in Strumenti → Impostazioni e incolla la chiave |
-| "Nessun risultato" | Il comune potrebbe essere scritto in modo diverso. Prova con il nome esatto (es. "Policoro" non "Policoro MT") |
-| "Categoria non mappata" | La categoria è nel file `categorie.txt` ma non è mappata nel codice. Aggiungi la mappatura in `categoriaToGeoapify()` |
-| Molti risultati ma di altri comuni | Controlla che il filtro `place_id` sia attivo (non `circle`) |
-| Excel non si apre | Prova con il CSV; oppure apri Excel → File → Apri → seleziona il `.xls` |
-| Errori SSL | Assicurati che Windows sia aggiornato (richiede TLS 1.2+) |
-| `comuni.txt` non trovato | Copia il file nella cartella dell'eseguibile (dove c'è `GMExtractions.exe`) |
+| "API Key mancante" | Strumenti → Impostazioni → incolla chiave |
+| Ricerca = 0 risultati | Prova senza "Provincia di" (es. solo "Matera") |
+| Categoria sconosciuta | Aggiungi mappatura in `categoriaToGeoapify()` |
+| Arricchimento = 0 contatti | Il sito blocca lo scraping o non ha contatti visibili |
+| Excel non si apre | Prova il CSV o apri Excel → File → Apri |
 
 ---
 
-## 11. Crediti
+## 13. Changelog
 
-- **Software:** GMExtractions v1.0.0
+### v1.1.0 (2026)
+- ✅ Ricerca per Provincia e Regione
+- ✅ Arricchimento Email / Instagram / Facebook
+- ✅ Esportazione PDF con report formattato
+- ✅ Database SQLite con storico
+- ✅ Pianificazione visite (Stato, Data, Note)
+- ✅ Filtro Categoria + Filtro Stato
+- ✅ Pulsante AVVIA/STOP ricerca
+- ✅ Guida integrata (menu ?)
+- ✅ Raggruppamento per Via con colori
+
+### v1.0.0 (2026)
+- Prima release con ricerca per comune, export Excel/CSV, schede per comune
+
+---
+
+## 14. Crediti
+
+- **Software:** GMExtractions v1.1.0
 - **Framework:** Qt 6.x (Open Source, LGPL)
 - **IDE:** Visual Studio 2026 + Qt VS Tools
 - **API:** [Geoapify](https://www.geoapify.com/)
@@ -195,10 +218,10 @@ Per aggiornare `comuni.txt` o `categorie.txt` con Notepad++: aggiungi/rimuovi ri
 
 ---
 
-**GMExtractions v1.0.0**
+**GMExtractions v1.1.0**  
 © 2026 **Massimo Sassano** — Tutti i diritti riservati.
 
 Sviluppato in C++ con Qt 6.x su Visual Studio 2026.
 
-Licenza del software: uso personale.
+Licenza del software: uso personale.  
 I dati sono forniti "as is" senza garanzie sulla completezza.
