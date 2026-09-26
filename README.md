@@ -1,5 +1,11 @@
 # GMExtractions — Software di Estrazione Attività
 
+<p align="center">
+  <img src="screen/main_gmextractions.png" alt="GMExtractions su Android" width="600">
+</p>
+
+
+
 Applicazione Windows per estrarre attività commerciali (bar, ristoranti, alberghi,
 negozi, ecc.) da comuni, province o regioni italiane, con esportazione in
 Excel / PDF / CSV, schede separate per comune e raggruppamento per via.
