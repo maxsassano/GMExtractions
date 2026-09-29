@@ -231,3 +231,13 @@ Sviluppato in C++ con Qt 6.x su Visual Studio 2026.
 
 Licenza del software: uso personale.  
 I dati sono forniti "as is" senza garanzie sulla completezza.
+
+---
+
+## ☕ Sostieni il progetto
+
+Se l'app ti è utile, puoi offrirmi un caffè:
+
+[![PayPal](https://img.shields.io/badge/PayPal-Offrimi%20un%20caffè-0070BA?logo=paypal)](https://paypal.me/veruscatanese)
+
+Ogni contributo aiuta a mantenere il progetto attivo e senza pubblicità. Grazie! 🙏
