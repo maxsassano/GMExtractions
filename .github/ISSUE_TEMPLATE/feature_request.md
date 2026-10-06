@@ -8,7 +8,7 @@ assignees: ''
 
 ## La tua proposta
 
-Descrivi in modo chiaro la funzionalità o il miglioramento che vorresti vedere in IlluminaGIS.
+Descrivi in modo chiaro la funzionalità o il miglioramento che vorresti vedere in GMExtractions.
 
 ## Problema che risolve
 
